@@ -1,4 +1,9 @@
-Upload your own docs to be queried by the docbot via the language model `gpt-3.5-turbo`. Usage is exploring how project docs are low-hanging fruit for how natural language processing (NLP) will have immediate impact on software documentation as the tiny tip of the iceberg.
+# Docbot :robot: 
+
+Upload your own docs to be queried by the docbot using Langchain and the language model `gpt-3.5-turbo`. Exploring how project docs are low-hanging fruit for how natural language processing (NLP) will have immediate impact on software documentation as the tiny tip of the iceberg.
+
+https://user-images.githubusercontent.com/1711674/232352601-e1e1d1ac-37f8-4120-9f70-aecbd5247857.mp4
+
 
 ### Docbot Pre-Requisites
 
