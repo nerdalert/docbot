@@ -18,9 +18,13 @@ pip install -U Flask
 
 ```commandline
 pip install llama_index openai langchain
+
+# Or with requirements.txt
+
+pip install -r requirements.txt
 ```
 
-Add your ChatGPT key in `docbot.py`. Get a key from [OpenAI](https://platform.openai.com/account/api-keys). You get $5 free in API usage from OpenAI. If you upload a small file like the example, `gpt-3.5-turbo` model is doesn't incur much if any cost. GAI competition should drive small usage to zero.
+Add your ChatGPT key in `docbot.py`. Get a key from [OpenAI](https://platform.openai.com/account/api-keys). You get $5 free in API usage from OpenAI. If you upload a small file like the example, `gpt-3.5-turbo` model doesn't incur much, if any cost. GAI competition should drive small usage to zero.
 
 ```python
 os.environ["OPENAI_API_KEY"] = "insert_your_key_here"
@@ -50,4 +54,4 @@ If you ask about something completely irrelevant to the docs it will tell you it
 Bugs/Incomplete: 
 - The upload button doesn't show what file you chose and once you hit upload, it doesn't list what file has been indexed in `json.index` but you can see the uploaded file in the `./data` directory and view the `index.json` file in the root directory. The file gets chunked and uploaded to ChatGPT then indexed locally.
 - This doesn't support PDFs, but it's easy to add with `from langchain.document_loaders import PyPDFLoader`
-- Langchain is awesome! It is changing daily, for example, with I need to switch to `from langchain.chat_models import ChatOpenAI` for `gpt-3.5-turbo` so you will see a deprecation warning until I fix it.
+- Langchain is awesome! It is changing daily, for example, with I need to swap `LLMPredictor(model_name="gpt-3.5-turbo")`  to `from langchain.chat_models import ChatOpenAI` for `gpt-3.5-turbo` so you will see a deprecation warning until I fix it.

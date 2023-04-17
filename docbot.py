@@ -43,7 +43,6 @@ def index_page():
         documents = loader.load_data()
 
         llm_predictor = LLMPredictor(llm=OpenAI(temperature=0, model_name="gpt-3.5-turbo"))
-        # llm_predictor = LLMPredictor(llm=OpenAI(temperature=0, model_name="text-davinci-003"))
         max_input_size = 4096
         num_output = 256
         max_chunk_overlap = 20
