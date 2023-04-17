@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <title>Nexodus Doc Chatbot</title>
+</head>
+<body class="light-theme">
+<div class="container">
+    <h1 class="mt-5 mb-4">Nexodus Documentation Chatbot</h1>
+    <div class="d-flex justify-content-end">
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="theme-toggle">
+            <label class="custom-control-label" for="theme-toggle" id="theme-toggle-label">
+                <i class="fas fa-sun"></i>
+            </label>
+        </div>
+    </div>
+    <form action="/" method="post" enctype="multipart/form-data" class="mt-3">
+        <div class="form-group rounded p-3" style="background-color: rgba(0, 0, 0, 0.1);">
+            <label for="file" class="font-weight-bold">
+                <span id="file-name">Choose a file (10mb max):</span>
+            </label>
+            <div class="d-flex align-items-center">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary" type="button">
+                            <i class="fas fa-upload"></i>
+                        </button>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="file" name="file">
+                        <label class="custom-file-label" for="file">Select a file to upload</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary ml-2">
+                    Upload
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <form id="query-form" class="mt-4">
+        <div class="form-group">
+            <label for="prompt">Ask the doc bot something about the project:</label>
+            <input type="text" id="prompt" name="prompt" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+    <div class="card mt-5">
+        <div class="card-header">
+            Nexodus Bot Responses
+        </div>
+        <div class="card-body">
+            <div id="chat-box" class="list-group"></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleLabel = document.getElementById('theme-toggle-label');
+
+    themeToggle.addEventListener('change', () => {
+        document.body.classList.toggle('light-theme');
+        document.body.classList.toggle('dark-theme');
+        if (themeToggle.checked) {
+            themeToggleLabel.innerHTML = '<i class="fas fa-moon"></i>';
+        } else {
+            themeToggleLabel.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+    });
+
+    document.getElementById('query-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const prompt = document.getElementById('prompt').value;
+        const chatBox = document.getElementById('chat-box');
+
+        const userMessage = document.createElement('div');
+        userMessage.className = 'list-group-item list-group-item-primary';
+        userMessage.innerText = prompt;
+        chatBox.appendChild(userMessage);
+
+        const response = await fetch('/query', {
+            method: 'POST',
+            body: new FormData(e.target),
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(res => res.json());
+
+        const botMessage = document.createElement('div');
+        botMessage.className = 'list-group-item list-group-item-info d-flex align-items-center';
+        botMessage.innerHTML = '<i class="fas fa-robot fa-lg mr-3"></i>' + response['response'];
+        chatBox.appendChild(botMessage);
+    });
+</script>
+</body>
+</html>
+

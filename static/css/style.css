@@ -1,0 +1,74 @@
+h1 {
+    font-weight: bold;
+}
+
+body {
+    transition: all 0.3s;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+body.light-theme {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+body.dark-theme {
+    background-color: #1B1E2B;
+    color: #ffffff;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.list-group-item-primary {
+    background-color: #E5E5E5;
+    color: #000;
+}
+
+.list-group-item-info {
+    background-color: #fff;
+    color: #000;
+}
+
+.btn i {
+    font-size: 1.2em;
+    margin-right: 0.5em;
+}
+
+/* Custom styles for the toggle switch */
+.custom-switch .custom-control-input:checked~.custom-control-label #theme-toggle-label {
+    transform: rotate(180deg);
+}
+
+.custom-switch .custom-control-label #theme-toggle-label {
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.custom-switch .custom-control-label #theme-toggle-label i {
+    margin-top: 0.15em;
+}
+
+.dark-theme .card-header {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.dark-theme .list-group-item-primary {
+    background-color: #373c46;
+    color: #fff;
+}
+
+.dark-theme .list-group-item-info {
+    background-color: #252A34;
+    color: #fff;
+}
+
+.dark-theme .card {
+    background-color: #252A34;
+    color: #fff;
+}
