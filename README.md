@@ -2,9 +2,9 @@
 
 Upload your own docs to be queried by the docbot using Langchain and the language model `gpt-3.5-turbo`. Exploring how project docs are low-hanging fruit for how natural language processing (NLP) will have immediate impact on software documentation as the tiny tip of the iceberg.
 
-https://user-images.githubusercontent.com/1711674/232352601-e1e1d1ac-37f8-4120-9f70-aecbd5247857.mp4
+- For a practical implementation of chatting with your project docs, check out [nerdalert/docbot-nexodus](https://github.com/nerdalert/docbot-nexodus) :robot: 
 
-For a practical implementation of chatting with your project docs, check out [nerdalert/docbot-nexodus](https://github.com/nerdalert/docbot-nexodus)
+https://user-images.githubusercontent.com/1711674/232352601-e1e1d1ac-37f8-4120-9f70-aecbd5247857.mp4
 
 ### Docbot Pre-Requisites
 
